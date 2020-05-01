@@ -1,6 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const engineerPrompts = require("./lib/Engineer");
 const welcomePrompt = require("./lib/welcome");
 const inquirer = require("inquirer");
 const path = require("path");
@@ -19,6 +20,7 @@ async function init() {
             switch (welcomeAnswers.selectRole) {
                 case 'Engineer':
                     console.log('Engineer Hit')
+                    engineerPrompts();
                     break;
                 case 'Intern':
                     console.log('Intern Hit')
@@ -37,6 +39,7 @@ async function init() {
 }
 
 init();
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
