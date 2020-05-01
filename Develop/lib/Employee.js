@@ -1,4 +1,7 @@
-// TODO: Write code to define and export the Employee class
+const engineer = require('./Engineer');
+const intern = require('./Intern');
+const manager = require('./Manager');
+
 class Employee {
     constructor(name, id, email) {
         this.name = name;
@@ -14,3 +17,5 @@ class Employee {
 
     getRole() { }
 }
+
+module.exports = Employee;
