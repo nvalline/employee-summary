@@ -1,6 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const welcomePrompt = require("./lib/welcome");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -10,7 +11,32 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+async function init() {
+    try {
+        const welcomeAnswers = await welcomePrompt();
 
+        if (welcomeAnswers.welcomeConfirm) {
+            switch (welcomeAnswers.selectRole) {
+                case 'Engineer':
+                    console.log('Engineer Hit')
+                    break;
+                case 'Intern':
+                    console.log('Intern Hit')
+                    break;
+                case 'Manager':
+                    console.log('Manager Hit')
+                    break;
+            }
+        } else {
+            console.log('No worries. Come back when you are ready to enter an employee!')
+        }
+
+    } catch (err) {
+        console.log('init Error: ' + err)
+    }
+}
+
+init();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
