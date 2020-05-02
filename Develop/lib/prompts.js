@@ -62,7 +62,8 @@ module.exports = {
                 type: 'list',
                 name: 'selectRole',
                 message: 'Choose which role to add.',
-                choices: ['Engineer', 'Intern', 'Manager']
+                choices: ['Engineer', 'Intern', 'Manager'],
+                when: answers => answers.welcomeConfirm
             }
         ])
     }
