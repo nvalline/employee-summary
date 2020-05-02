@@ -1,7 +1,8 @@
-const Manager = require("./lib/Manager");
+const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const engineerPrompts = require("./lib/Engineer");
+const Manager = require("./lib/Manager");
+const { employeePrompts, engineerPrompts } = require('./lib/prompts');
 const welcomePrompt = require("./lib/welcome");
 const inquirer = require("inquirer");
 const path = require("path");
@@ -14,13 +15,19 @@ const render = require("./lib/htmlRenderer");
 
 async function init() {
     try {
+        let employee;
+        let engineer;
+
         const welcomeAnswers = await welcomePrompt();
 
         if (welcomeAnswers.welcomeConfirm) {
             switch (welcomeAnswers.selectRole) {
                 case 'Engineer':
                     console.log('Engineer Hit')
-                    engineerPrompts();
+                    employee = await employeePrompts();
+                    console.log(employee)
+                    engineer = await engineerPrompts();
+                    console.log(engineer)
                     break;
                 case 'Intern':
                     console.log('Intern Hit')
@@ -32,6 +39,7 @@ async function init() {
         } else {
             console.log('No worries. Come back when you are ready to enter an employee!')
         }
+
 
     } catch (err) {
         console.log('init Error: ' + err)

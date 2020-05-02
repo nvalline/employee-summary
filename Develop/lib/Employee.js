@@ -1,3 +1,5 @@
+const inquirer = require('inquirer');
+
 class Employee {
     constructor(name, id, email) {
         this.name = name;
@@ -18,7 +20,11 @@ class Employee {
     }
 
     getRole() {
-        return 'Employee';
+
+    }
+
+    printInfo() {
+        console.log(`Name: ${this.name}, ID: ${this.id}, Email: ${this.email}, GitHub: ${this.github}`)
     }
 }
 
