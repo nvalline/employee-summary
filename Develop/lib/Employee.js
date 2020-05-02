@@ -22,10 +22,6 @@ class Employee {
     getRole() {
         return this.role = 'Employee';
     }
-
-    printInfo() {
-        console.log(`Name: ${this.name}, ID: ${this.id}, Email: ${this.email}`)
-    }
 }
 
 module.exports = Employee;

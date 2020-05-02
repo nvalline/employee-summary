@@ -26,22 +26,21 @@ async function init() {
                     const engineer = await engineerPrompts();
                     const newEngineer = new Engineer(employee.name, employee.id, employee.email, engineer.github);
 
-                    newEngineer.printInfo();
+                    console.log(newEngineer)
                     break;
                 case 'Intern':
                     employee = await employeePrompts();
                     const intern = await internPrompts();
                     const newIntern = new Intern(employee.name, employee.id, employee.email, intern.school);
 
-                    newIntern.printInfo();
+                    console.log(newIntern)
                     break;
                 case 'Manager':
-                    console.log('Manager Hit')
                     employee = await employeePrompts();
                     const manager = await managerPrompts();
                     const newManager = new Manager(employee.name, employee.id, employee.email, manager.officeNum);
 
-                    newManager.printInfo();
+                    console.log(newManager)
                     break;
             }
         } else {
