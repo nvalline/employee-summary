@@ -2,11 +2,10 @@ const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const { employeePrompts, engineerPrompts, welcomePrompts } = require('./lib/prompts');
-// const welcomePrompt = require("./lib/welcome");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const { employeePrompts, engineerPrompts, internPrompts, managerPrompts, welcomePrompts } = require('./lib/prompts');
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -23,19 +22,26 @@ async function init() {
         if (welcomeAnswers.welcomeConfirm) {
             switch (welcomeAnswers.selectRole) {
                 case 'Engineer':
-                    console.log('Engineer Hit')
                     employee = await employeePrompts();
                     const engineer = await engineerPrompts();
+                    const newEngineer = new Engineer(employee.name, employee.id, employee.email, engineer.github);
 
-                    const newEng = new Engineer(employee.name, employee.id, employee.email, engineer.github);
-
-                    console.log(newEng)
+                    newEngineer.printInfo();
                     break;
                 case 'Intern':
-                    console.log('Intern Hit')
+                    employee = await employeePrompts();
+                    const intern = await internPrompts();
+                    const newIntern = new Intern(employee.name, employee.id, employee.email, intern.school);
+
+                    newIntern.printInfo();
                     break;
                 case 'Manager':
                     console.log('Manager Hit')
+                    employee = await employeePrompts();
+                    const manager = await managerPrompts();
+                    const newManager = new Manager(employee.name, employee.id, employee.email, manager.officeNum);
+
+                    newManager.printInfo();
                     break;
             }
         } else {

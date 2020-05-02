@@ -25,8 +25,28 @@ module.exports = {
         return inquirer.prompt([
             {
                 type: 'input',
-                message: "Enter engineer's github username:",
+                message: "Enter github username:",
                 name: 'github'
+            }
+        ])
+    },
+
+    internPrompts: () => {
+        return inquirer.prompt([
+            {
+                type: 'input',
+                message: 'Enter school name:',
+                name: 'school'
+            }
+        ])
+    },
+
+    managerPrompts: () => {
+        return inquirer.prompt([
+            {
+                type: 'input',
+                message: 'Enter office number:',
+                name: 'officeNum'
             }
         ])
     },
@@ -42,12 +62,8 @@ module.exports = {
                 type: 'list',
                 name: 'selectRole',
                 message: 'Choose which role to add.',
-                choices: ['Engineer', 'Intern', 'Manager'],
-                when: (answers) => answers.welcomeConfirm
+                choices: ['Engineer', 'Intern', 'Manager']
             }
         ])
     }
 }
-
-// exports = employeePrompts;
-// exports = engineerPrompts;
