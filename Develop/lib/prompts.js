@@ -22,7 +22,30 @@ module.exports = {
     },
 
     engineerPrompts: () => {
-        console.log('Engineer Prompts hit')
+        return inquirer.prompt([
+            {
+                type: 'input',
+                message: "Enter engineer's github username:",
+                name: 'github'
+            }
+        ])
+    },
+
+    welcomePrompts: () => {
+        return inquirer.prompt([
+            {
+                type: 'confirm',
+                name: 'welcomeConfirm',
+                message: 'Wecome! Would you like to enter an employee?'
+            },
+            {
+                type: 'list',
+                name: 'selectRole',
+                message: 'Choose which role to add.',
+                choices: ['Engineer', 'Intern', 'Manager'],
+                when: (answers) => answers.welcomeConfirm
+            }
+        ])
     }
 }
 

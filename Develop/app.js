@@ -2,8 +2,8 @@ const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const { employeePrompts, engineerPrompts } = require('./lib/prompts');
-const welcomePrompt = require("./lib/welcome");
+const { employeePrompts, engineerPrompts, welcomePrompts } = require('./lib/prompts');
+// const welcomePrompt = require("./lib/welcome");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -16,18 +16,20 @@ const render = require("./lib/htmlRenderer");
 async function init() {
     try {
         let employee;
-        let engineer;
+        // let engineer;
 
-        const welcomeAnswers = await welcomePrompt();
+        const welcomeAnswers = await welcomePrompts();
 
         if (welcomeAnswers.welcomeConfirm) {
             switch (welcomeAnswers.selectRole) {
                 case 'Engineer':
                     console.log('Engineer Hit')
                     employee = await employeePrompts();
-                    console.log(employee)
-                    engineer = await engineerPrompts();
-                    console.log(engineer)
+                    const engineer = await engineerPrompts();
+
+                    const newEng = new Engineer(employee.name, employee.id, employee.email, engineer.github);
+
+                    console.log(newEng)
                     break;
                 case 'Intern':
                     console.log('Intern Hit')
