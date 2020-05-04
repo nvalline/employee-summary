@@ -5,52 +5,34 @@ const Manager = require("./lib/Manager");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const { employeePrompts, engineerPrompts, internPrompts, managerPrompts, welcomePrompts } = require('./lib/prompts');
+const collectEmployees = require('./lib/prompts');
+// const { employeePrompts, engineerPrompts, internPrompts, managerPrompts, welcomePrompts } = require('./lib/prompts');
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-async function init() {
-    try {
-        let employee;
-        // let engineer;
+const mainPrompts = async () => {
+    const employees = await collectEmployees();
+    console.log(employees)
+    render(employees);
+}
 
-        const welcomeAnswers = await welcomePrompts();
-
-        if (welcomeAnswers.welcomeConfirm) {
-            switch (welcomeAnswers.selectRole) {
-                case 'Engineer':
-                    employee = await employeePrompts();
-                    const engineer = await engineerPrompts();
-                    const newEngineer = new Engineer(employee.name, employee.id, employee.email, engineer.github);
-
-                    console.log(newEngineer)
-                    break;
-                case 'Intern':
-                    employee = await employeePrompts();
-                    const intern = await internPrompts();
-                    const newIntern = new Intern(employee.name, employee.id, employee.email, intern.school);
-
-                    console.log(newIntern)
-                    break;
-                case 'Manager':
-                    employee = await employeePrompts();
-                    const manager = await managerPrompts();
-                    const newManager = new Manager(employee.name, employee.id, employee.email, manager.officeNum);
-
-                    console.log(newManager)
-                    break;
-            }
-        } else {
-            console.log('No worries. Come back when you are ready to enter an employee!')
+function startPrompt() {
+    return inquirer.prompt([
+        {
+            type: 'confirm',
+            message: 'Welcome! Would you like to enter an employee?',
+            name: 'start'
         }
+    ]);
+}
 
+const init = async () => {
+    const firstPrompt = await startPrompt();
 
-    } catch (err) {
-        console.log('init Error: ' + err)
-    }
+    firstPrompt.start ? mainPrompts() : console.log('No worries. Come back when you are ready to add an employee.');
 }
 
 init();

@@ -1,70 +1,60 @@
 const inquirer = require('inquirer');
 
-module.exports = {
-    employeePrompts: () => {
-        return inquirer.prompt([
-            {
-                type: 'input',
-                message: 'Enter full name:',
-                name: 'name'
-            },
-            {
-                type: 'input',
-                message: 'Enter employee ID number:',
-                name: 'id'
-            },
-            {
-                type: 'input',
-                message: 'Enter employee email address:',
-                name: 'email'
-            }
-        ]);
-    },
+const collectEmployees = async (employees = []) => {
+    const prompts = [
+        {
+            type: 'input',
+            message: 'Enter full name:',
+            name: 'name'
+        },
+        {
+            type: 'input',
+            message: 'Enter employee ID number:',
+            name: 'id'
+        },
+        {
+            type: 'input',
+            message: 'Enter employee email address:',
+            name: 'email'
+        },
+        {
+            type: 'list',
+            name: 'selectRole',
+            message: 'Choose which role to add:',
+            choices: ['Engineer', 'Intern', 'Manager']
+        },
+        {
+            type: 'input',
+            message: 'Enter Github Username:',
+            name: 'github',
+            when: answers => answers.selectRole === 'Engineer'
+        },
+        {
+            type: 'input',
+            message: 'Enter school name:',
+            name: 'school',
+            when: answers => answers.selectRole === 'Intern'
+        },
+        {
+            type: 'input',
+            message: 'Enter office number:',
+            name: 'officeNumber',
+            when: answers => answers.selectRole === 'Manager'
+        },
+        {
+            type: 'confirm',
+            message: 'Enter another Employee?',
+            name: 'again',
+            default: true
+        }
+    ];
 
-    engineerPrompts: () => {
-        return inquirer.prompt([
-            {
-                type: 'input',
-                message: "Enter github username:",
-                name: 'github'
-            }
-        ])
-    },
+    const { again, ...answers } = await inquirer.prompt(prompts);
 
-    internPrompts: () => {
-        return inquirer.prompt([
-            {
-                type: 'input',
-                message: 'Enter school name:',
-                name: 'school'
-            }
-        ])
-    },
+    const newEmployees = [...employees, answers];
 
-    managerPrompts: () => {
-        return inquirer.prompt([
-            {
-                type: 'input',
-                message: 'Enter office number:',
-                name: 'officeNum'
-            }
-        ])
-    },
+    return again ? collectEmployees(newEmployees) : newEmployees;
+};
 
-    welcomePrompts: () => {
-        return inquirer.prompt([
-            {
-                type: 'confirm',
-                name: 'welcomeConfirm',
-                message: 'Wecome! Would you like to enter an employee?'
-            },
-            {
-                type: 'list',
-                name: 'selectRole',
-                message: 'Choose which role to add.',
-                choices: ['Engineer', 'Intern', 'Manager'],
-                when: answers => answers.welcomeConfirm
-            }
-        ])
-    }
-}
+module.exports = collectEmployees;
+
