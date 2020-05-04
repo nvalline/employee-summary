@@ -6,7 +6,6 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const collectEmployees = require('./lib/prompts');
-// const { employeePrompts, engineerPrompts, internPrompts, managerPrompts, welcomePrompts } = require('./lib/prompts');
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -14,10 +13,34 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const mainPrompts = async () => {
+    const newEmployees = [];
     const employees = await collectEmployees();
     console.log(employees)
-    render(employees);
+
+    for (const employee of employees) {
+        switch (employee.selectRole) {
+            case 'Engineer':
+                const newEngineer = new Engineer(employee.name, employee.id, employee.email, employee.github);
+
+                newEmployees.push(newEngineer);
+                break;
+            case 'Intern':
+                const newIntern = new Intern(employee.name, employee.id, employee.email, employee.school);
+
+                newEmployees.push(newIntern);
+                break;
+
+            case 'Manager':
+                const newManager = new Manager(employee.name, employee.id, employee.email, employee.officeNumber);
+
+                newEmployees.push(newManager);
+                break;
+        }
+    }
+
+    await render(newEmployees);
 }
+
 
 function startPrompt() {
     return inquirer.prompt([
@@ -32,7 +55,20 @@ function startPrompt() {
 const init = async () => {
     const firstPrompt = await startPrompt();
 
-    firstPrompt.start ? mainPrompts() : console.log('No worries. Come back when you are ready to add an employee.');
+    if (firstPrompt.start) {
+        await mainPrompts()
+        console.log(render)
+
+        await fs.access('./output', function (err) {
+            if (err) {
+                fs.mkdirSync(OUTPUT_DIR);
+            }
+        })
+
+        const writeTeam = fs.writeFile(outputPath, render);
+    } else {
+        console.log('No worries. Come back when you are ready to add an employee.')
+    }
 }
 
 init();
