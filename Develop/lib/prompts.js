@@ -5,17 +5,35 @@ const collectEmployees = async (employees = []) => {
         {
             type: 'input',
             message: 'Enter full name:',
-            name: 'name'
+            name: 'name',
+            validate: async (name) => {
+                if (name !== "") {
+                    return true;
+                }
+                return false;
+            }
         },
         {
             type: 'input',
             message: 'Enter employee ID number:',
-            name: 'id'
+            name: 'id',
+            validate: async (name) => {
+                if (name !== "") {
+                    return true;
+                }
+                return false;
+            }
         },
         {
             type: 'input',
             message: 'Enter employee email address:',
-            name: 'email'
+            name: 'email',
+            validate: async (name) => {
+                if (name !== "") {
+                    return true;
+                }
+                return false;
+            }
         },
         {
             type: 'list',
@@ -27,19 +45,37 @@ const collectEmployees = async (employees = []) => {
             type: 'input',
             message: 'Enter Github Username:',
             name: 'github',
-            when: answers => answers.selectRole === 'Engineer'
+            when: answers => answers.selectRole === 'Engineer',
+            validate: async (name) => {
+                if (name !== "") {
+                    return true;
+                }
+                return false;
+            }
         },
         {
             type: 'input',
             message: 'Enter school name:',
             name: 'school',
-            when: answers => answers.selectRole === 'Intern'
+            when: answers => answers.selectRole === 'Intern',
+            validate: async (name) => {
+                if (name !== "") {
+                    return true;
+                }
+                return false;
+            }
         },
         {
             type: 'input',
             message: 'Enter office number:',
             name: 'officeNumber',
-            when: answers => answers.selectRole === 'Manager'
+            when: answers => answers.selectRole === 'Manager',
+            validate: async (name) => {
+                if (name !== "") {
+                    return true;
+                }
+                return false;
+            }
         },
         {
             type: 'confirm',
