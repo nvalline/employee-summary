@@ -47,7 +47,7 @@ Once all team members are added the application will render a new html file.  Wh
 
 Download the source files to the desired project directory. Open the terminal and navigate to the directory in the last step. Simply enter 'npm install', to install the necessary dependencies. 
 
-#### [View Video Walkthrough](https://nv-marketing-llc.wistia.com/medias/0hiqal6xuv)
+#### [View Video Walkthrough](https://nv-marketing-llc.wistia.com/medias/kfsu20kb4l)
 
 [Back To The Top](#project-name)
 
@@ -57,7 +57,7 @@ Download the source files to the desired project directory. Open the terminal an
 
 Once the dependencies are installed, simply open the terminal, navigate to the Develop directory and enter 'npm start'.  This will launch the application.  Follow the prompts that are presented in the terminal. Use the 'Enter/Return' key to submit the response to each prompt.
 
-#### [View Video Walkthrough](https://nv-marketing-llc.wistia.com/medias/0hiqal6xuv)
+#### [View Video Walkthrough](https://nv-marketing-llc.wistia.com/medias/kfsu20kb4l)
 
 #### [View The Site](#) - The project is not live.
 
