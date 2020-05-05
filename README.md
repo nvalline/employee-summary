@@ -1,175 +1,123 @@
-# Unit 10 OOP Homework: Template Engine - Employee Summary
+## Project Name
 
-One of the most important aspects of programming is writing code that is readable, reliable, and maintainable. Oftentimes, *how* we design our code is just as important as the code itself. In this homework assignment, your challenge is to build a Node CLI that takes in information about employees and generates an HTML webpage that displays summaries for each person. Since testing is a key piece in making code maintainable, you will also be ensuring that all unit tests pass.
+# Employee Summary
 
+<img src="./assets/employee-summary.png" alt="Project Screenshot" max-height="500px">
 
-## Instructions
+> This command line application will generate a a software engineering team summary webpage.
 
-You will build a software engineering team generator command line application. The application will prompt the user for information about the team manager and then information about the team members. The user can input any number of team members, and they may be a mix of engineers and interns. This assignment must also pass all unit tests. When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user. Following the [common templates for user stories](https://en.wikipedia.org/wiki/User_story#Common_templates), we can frame this challenge as follows:
+#### [View The Site](#) - The project is not live.
 
-```
-As a manager
-I want to generate a webpage that displays my team's basic info
-so that I have quick access to emails and GitHub profiles
-```
+---
 
-How do you deliver this? Here are some guidelines:
+### Table of Contents
 
-* Use the [Inquirer npm package](https://github.com/SBoudrias/Inquirer.js/) to prompt the user for their email, id, and specific information based on their role with the company. For instance, an intern may provide their school, whereas an engineer may provide their GitHub username.
+- [Description](#description)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [How To Use](#how-to-use)
+- [Test(s)](#tests)
+- [Contributors](#contributors)
+- [Questions](#questions)
+- [License](#license)
 
-* Your app will run as a Node CLI to gather information about each employee.
+---
 
-* Below is an example of what your application may look like. Remember, the styling is completely up to you so try to make it unique.
+## Description
 
-![Employee Summary 1](./Assets/10-OOP-homework-demo-1.png)
-![Employee Summary 2](./Assets/10-OOP-homework-demo-2.png)
+This command-line application will generate a software engineering team summary webpage. The user is prompted through the command line to enter new team member information. Roles amongst the team consist of Managers, Engineers, & Interns. The user is able to enter as many team members as needed.  
 
-In the `Develop` folder, there is a `package.json`, so make sure to `npm install`.
+Once all team members are added the application will render a new html file.  When loaded in a browser the new html file presents all the team members in a clean and easy to view manner. 
 
-The dependencies are, [jest](https://jestjs.io/) for running the provided tests, and [inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user.
+[Back To The Top](#project-name)
 
-There are also unit tests to help you build the classes necessary.
+---
 
-It is recommended that you follow this workflow:
+## Technologies
 
-1. Run tests
-2. Create or update classes to pass a single test case
-3. Repeat
+![GitHub Top Language](https://img.shields.io/github/languages/top/nvalline/employee-summary) ![GitHub language count](https://img.shields.io/github/languages/count/nvalline/employee-summary)
 
-🎗 Remember, you can run the tests at any time with `npm run test`
+- Javascript, node.js, HTML, jest
 
-It is recommended that you start with a directory structure that looks like this:
+[Back To The Top](#project-name)
 
-```
-lib/           // classes and helper code
-output/        // rendered output
-templates/     // HTML template(s)
-test/          // jest tests
-  Employee.test.js
-  Engineer.test.js
-  Intern.test.js
-  Manager.test.js
-app.js         // Runs the application
-```
+---
 
-### Hints
+## Installation
 
-* Create multiple HTML templates for each type of user. For example, you could use the following templates:
+Download the source files to the desired project directory. Open the terminal and navigate to the directory in the last step. Simply enter 'npm install', to install the necessary dependencies. 
 
-  * `main.html`
+#### [View Video Walkthrough](https://nv-marketing-llc.wistia.com/medias/0hiqal6xuv)
 
-  * `engineer.html`
-  
-  * `intern.html`
-  
-  * `manager.html`
+[Back To The Top](#project-name)
 
-* You will want to make your methods as pure as possible. This means try to make your methods simple so that they are easier to test.
+---
 
-* The different employee types should all inherit some methods and properties from a base class of `Employee`.
+## How To Use
 
-* In your HTML template files, you may want to add a placeholder character that helps your program identify where the dynamic markup begins and ends.
+Once the dependencies are installed, simply open the terminal, navigate to the Develop directory and enter 'npm start'.  This will launch the application.  Follow the prompts that are presented in the terminal. Use the 'Enter/Return' key to submit the response to each prompt.
 
-## Minimum Requirements
+#### [View Video Walkthrough](https://nv-marketing-llc.wistia.com/medias/0hiqal6xuv)
 
-* Functional application.
+#### [View The Site](#) - The project is not live.
 
-* GitHub repository with a unique name and a README describing the project.
+[Back To The Top](#project-name)
 
-* User can use the CLI to generate an HTML page that displays information about their team.
+---
 
-* All tests must pass.
+## Tests
 
-### Classes
-The project must have the these classes: `Employee`, `Manager`, `Engineer`,
-`Intern`. The tests for these classes in the `tests` directory must all pass.
+This application was test driven developed while primarily focusing on the development of the constructor functions.
 
-The first class is an `Employee` parent class with the following properties and
-methods:
+To run a test, simply open the terminal, navigate to the Develop directory and enter 'npm test'.
 
-  * name
-  * id
-  * email
-  * getName()
-  * getId()
-  * getEmail()
-  * getRole() // Returns 'Employee'
+[Back To The Top](#project-name)
 
-The other three classes will extend `Employee`. 
+---
 
-In addition to `Employee`'s properties and methods, `Manager` will also have:
+## Contributors
 
-  * officeNumber
+- Nate Valline
 
-  * getRole() // Overridden to return 'Manager'
+[Back To The Top](#project-name)
 
-In addition to `Employee`'s properties and methods, `Engineer` will also have:
+---
 
-  * github  // GitHub username
+## Questions
 
-  * getGithub()
+Please contact the following for any questions.
 
-  * getRole() // Overridden to return 'Engineer'
+<img src="https://avatars3.githubusercontent.com/u/58278138?v=4" alt="User Image" width="35px">  =>  contact@natevalline.com
 
-In addition to `Employee`'s properties and methods, `Intern` will also have:
+[Back To The Top](#project-name)
 
-  * school 
+---
 
-  * getSchool()
+## License
 
-  * getRole() // Overridden to return 'Intern'
+MIT License
 
-### User input
+Copyright (c) 2020 Nate Valline
 
-The project must prompt the user to build an engineering team. An engineering
-team consists of a manager, and any number of engineers and interns.
-
-### Roster output
-
-The project must generate a `team.html` page in the `output` directory, that displays a nicely formatted team roster. Each team member should display the following in no particular order:
-
-  * Name
-
-  * Role
-
-  * ID
-
-  * Role-specific property (School, link to GitHub profile, or office number)
-
-## Bonus
-
-* Use validation to ensure that the information provided is in the proper expected format.
-
-* Add the application to your portfolio.
-
-## Commit Early and Often
-
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
-
-* Your commit history is a signal to employers that you are actively working on projects and learning new skills.
-
-* Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
-
-Follow these guidelines for committing:
-
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
-
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
-
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
-
-* Test your application before you commit to ensure functionality at every step in the development process.
-
-We would like you to have well over 200 commits by graduation, so commit early and often!
-
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL of the GitHub repository
-
-* A video demonstrating the entirety of the app's functionality 
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+[Back To The Top](#project-name)
+
+---
+    
