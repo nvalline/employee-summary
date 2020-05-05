@@ -2,7 +2,7 @@
 
 # Employee Summary
 
-<img src="./assets/employee-summary.png" alt="Project Screenshot" max-height="500px">
+<img src="./Assets/employee-summary.png" alt="Project Screenshot" max-height="500px">
 
 > This command line application will generate a a software engineering team summary webpage.
 
